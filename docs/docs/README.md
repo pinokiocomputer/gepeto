@@ -56,5 +56,7 @@ It's the same convention used by [huggingface spaces](https://huggingface.co/spa
 
 By default Gepeto generates some scripts that follow the convention, but you can very easily modify the generated scripts yourself since they are very short.
 
+> To learn how to customize the scripts, check out the Pinokio Programming Manual: https://program.pinokio.computer
+
 ---
 
