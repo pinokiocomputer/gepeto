@@ -1,0 +1,18 @@
+{
+  "name": "gepeto",
+  "version": "0.1.15",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "gepeto": "./index.js"
+  },
+  "author": "cocktailpeanut",
+  "license": "MIT",
+  "dependencies": {
+    "kleur": "^4.1.5",
+    "prompts": "^2.4.2"
+  }
+}
