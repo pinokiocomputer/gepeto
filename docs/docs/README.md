@@ -1,10 +1,10 @@
 # gepeto
 
-Generate 1-Click AI Launchers Automatically
+Generate 1-Click AI Launchers, Instantly.
 
 ---
 
-![poster.jpg](poster.jpg)
+![gepeto.jpg](gepeto.jpg)
 
 ---
 
