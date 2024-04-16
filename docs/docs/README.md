@@ -35,6 +35,8 @@ npx gepeto@latest
 
 This will ask some questions and create a new project folder for you under the `/PINOKIO_HOME/api` folder.
 
+> Learn more about Pinokio File System here: https://program.pinokio.computer/#/?id=home-directory
+
 ---
 
 # how does it work?
