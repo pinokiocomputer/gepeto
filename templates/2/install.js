@@ -13,7 +13,6 @@ module.exports = {
     params: {
       venv: "env",
       message: [
-        "pip install gradio",
         "pip install -r <INSTALL_FILE>"
       ],
     }

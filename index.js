@@ -103,12 +103,16 @@ const git = require('isomorphic-git');
   start_str = start_str.replaceAll("<START_FILE>", response.start)
   fs.writeFileSync(startFile, start_str)
 
-  // 6, if url does not exist, it's template/2 => create an empty start file and install file
-  let requirementsFile = path.resolve(dest, response.install)
-  fs.writeFileSync(requirementsFile, "# Add required PIP dependencies")
+  // If url doesn't exist => means start fresh, so create those files
+  // if url exists => assume the files exist in the cloned repo
+  if (!url) {
+    // 6, if url does not exist, it's template/2 => create an empty start file and install file
+    let requirementsFile = path.resolve(dest, response.install)
+    await fs.promises.rename(path.resolve(dest, "requirements.txt"), requirementsFile)
 
-  let appFile = path.resolve(dest, response.start)
-  fs.writeFileSync(appFile, `print('# Replace with your own logic inside ${appFile}')`)
+    let appFile = path.resolve(dest, response.start)
+    await fs.promises.rename(path.resolve(dest, "app.py"), appFile)
+  }
 
   // 7. icon handling
   let icon

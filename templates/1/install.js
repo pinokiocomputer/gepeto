@@ -22,7 +22,7 @@ module.exports = {
       venv: "env",
       path: "app",
       message: [
-        "pip install gradio",
+        "pip install gradio devicetorch",
         "pip install -r <INSTALL_FILE>"
       ]
     }
