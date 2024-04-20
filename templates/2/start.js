@@ -5,7 +5,7 @@ module.exports = {
     params: {
       venv: "env",
       message: [
-        "python app.py",
+        "python <START_FILE>",
       ],
       on: [{ "event": "/http:\/\/[0-9.:]+/", "done": true }]
     }

@@ -5,7 +5,7 @@ module.exports = {
       uri: "torch.js",
       params: {
         venv: "env",
-        xformers: true
+//        xformers: true
       }
     }
   }, {
@@ -13,7 +13,8 @@ module.exports = {
     params: {
       venv: "env",
       message: [
-        "pip install -r requirements.txt"
+        "pip install gradio",
+        "pip install -r <INSTALL_FILE>"
       ],
     }
   }, {

@@ -13,7 +13,7 @@ module.exports = {
       params: {
         path: "app",
         venv: "env",
-        xformers: true
+//        xformers: true
       }
     }
   }, {
@@ -22,7 +22,8 @@ module.exports = {
       venv: "env",
       path: "app",
       message: [
-        "pip install -r requirements.txt"
+        "pip install gradio",
+        "pip install -r <INSTALL_FILE>"
       ]
     }
   }, {

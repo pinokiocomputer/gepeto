@@ -1,6 +1,6 @@
 {
   "name": "gepeto",
-  "version": "0.1.15",
+  "version": "0.1.23",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,9 @@
   "author": "cocktailpeanut",
   "license": "MIT",
   "dependencies": {
+    "isomorphic-git": "^1.25.7",
     "kleur": "^4.1.5",
-    "prompts": "^2.4.2"
+    "prompts": "^2.4.2",
+    "yargs": "^17.7.2"
   }
 }
