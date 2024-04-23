@@ -11,9 +11,7 @@ const { hideBin } = require('yargs/helpers')
 const prompts = require('prompts');
 const git = require('isomorphic-git');
 (async () => {
-  console.log("process.argv", process.argv)
   const argv = yargs(hideBin(process.argv)).parse();
-  console.log({ argv })
   let response
   if (argv.name) {
     response = {
@@ -63,7 +61,6 @@ const git = require('isomorphic-git');
         this.msg = `${kleur.green('PIP install file')} (Leave empty to use the default)`
       }
     }]);
-    console.log(response)
   }
 
   let url = response.git.trim().length > 0 ? response.git.trim() : null
