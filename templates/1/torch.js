@@ -1,5 +1,6 @@
 module.exports = {
   run: [
+    // windows nvidia
     {
       "when": "{{platform === 'win32' && gpu === 'nvidia'}}",
       "method": "shell.run",
@@ -16,7 +17,7 @@ module.exports = {
       "params": {
         "venv": "{{args && args.venv ? args.venv : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
-        "message": "pip install torch-directml"
+        "message": "pip install torch-directml torchvision torchaudio"
       }
     },
     // windows cpu
@@ -36,7 +37,7 @@ module.exports = {
       "params": {
         "venv": "{{args && args.venv ? args.venv : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
-        "message": "pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu"
+        "message": "pip install torch torchvision torchaudio"
       }
     },
     // linux nvidia
@@ -56,7 +57,7 @@ module.exports = {
       "params": {
         "venv": "{{args && args.venv ? args.venv : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
-        "message": "pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.7"
+        "message": "pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.0"
       }
     },
     // linux cpu
