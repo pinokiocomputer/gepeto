@@ -131,6 +131,17 @@ const git = require('isomorphic-git');
   let str = fs.readFileSync(pinokioFile, "utf8")
   str = str.replaceAll("<ICON>", icon)
   fs.writeFileSync(pinokioFile, str)
+  
+  // Autogenerate README
+  if (url) {
+    let readme = `# ${name}
+
+A pinokio script for ${url}
+
+`
+    const readmeFile = path.resolve(dest, "README.md")
+    fs.writeFileSync(readmeFile, readme)
+  }
 
   // 8. add .gitignore
   let gitIgnore = path.resolve(dest, ".gitignore")
