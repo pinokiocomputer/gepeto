@@ -17,7 +17,7 @@ module.exports = {
       params: {
         venv: "env",                // Edit this to customize the venv folder path
         message: [
-          "pip install -r <INSTALL_FILE>"
+          "uv pip install -r <INSTALL_FILE>"
         ],
       }
     },
