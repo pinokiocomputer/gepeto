@@ -10,8 +10,55 @@ const yargs = require('yargs/yargs')
 const { hideBin } = require('yargs/helpers')
 const prompts = require('prompts');
 const git = require('isomorphic-git');
-(async () => {
-  const argv = yargs(hideBin(process.argv)).parse();
+const add = async (type, argv) => {
+  console.log("add", type, argv)
+  let pinokio_meta = path.resolve(process.cwd(), "pinokio_meta.json")
+  let meta
+  try {
+    meta = require(pinokio_meta)
+  } catch (e) {
+    meta = {}
+  }
+  delete argv._
+  for(let key in argv) {
+    if (key.startsWith("$")) {
+      delete argv[key]
+    }
+  }
+  if (type === "link") {
+    if (argv.value && argv.value.length > 0) {
+      if (meta.links) {
+        if (Array.isArray(meta.links)) {
+          meta.links = meta.links.concat(argv)
+        } else {
+          meta.links = [argv]
+        }
+      } else {
+        meta.links = [argv]
+      }
+    }
+  }
+  if (type === "post") {
+    if (meta.posts) {
+      if (argv.value) {
+        if (Array.isArray(meta.posts)) {
+          meta.posts = meta.posts.concat(argv.value)
+        } else {
+          meta.posts = [argv.value]
+        }
+      }
+    } else {
+      if (argv.value) {
+        meta.posts = [argv.value]
+      }
+    }
+  }
+  let str = JSON.stringify(meta, null, 2)
+  console.log({ str })
+  fs.writeFileSync(pinokio_meta, str)
+}
+
+const bootstrap = async (argv) => {
   let response
   if (argv.name) {
     response = {
@@ -86,6 +133,13 @@ const git = require('isomorphic-git');
     let str = fs.readFileSync(pinokioFile, "utf8")
     str = str.replaceAll("<TITLE>", name)
     fs.writeFileSync(pinokioFile, str)
+
+    let pinokio_meta = path.resolve(dest, "pinokio_meta.json")
+    let str2 = JSON.stringify({
+      links: [],
+      posts: []
+    }, null, 2)
+    fs.writeFileSync(pinokio_meta, str2)
   }
 
   // 4. replace <INSTALL_FILE> with response.install
@@ -168,4 +222,18 @@ A pinokio script for ${url}
   // 12. git branch main
   await git.branch({ fs, dir: dest, ref: 'main' })
 
+}
+
+(async () => {
+  const argv = yargs(hideBin(process.argv)).parse();
+  console.log({ argv })
+  if (argv._ && argv._.length > 0) {
+    if (argv._.length > 1 && argv._[0] === "add") {
+      // type := "post"|"link"
+      let type = argv._[1] 
+      await add(type, argv)
+    }
+  } else {
+    await bootstrap(argv)
+  }
 })();

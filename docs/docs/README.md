@@ -60,3 +60,25 @@ By default Gepeto generates some scripts that follow the convention, but you can
 
 ---
 
+
+# CLI Usage
+
+## 1. Generate Scripts
+
+```
+npx gepeto@latest  --name <name> --git <git> --icon <icon>
+```
+
+## 2. Set metadata
+
+Adding X.com posts to the `posts` array in `pinokio_meta.json` 
+
+```
+npx gepeto@latest add post --value <value>
+```
+
+Adding X.com posts to the `links` array in `pinokio_meta.json` 
+
+```
+npx gepeto@latest add link --type <type> --title <title> --value <value>
+```

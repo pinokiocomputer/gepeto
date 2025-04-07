@@ -8,6 +8,8 @@ module.exports = {
         params: {
           venv: "env",                // Edit this to customize the venv folder path
           // xformers: true   // uncomment this line if your project requires xformers
+          // triton: true   // uncomment this line if your project requires triton
+          // sageattention: true   // uncomment this line if your project requires sageattention
         }
       }
     },
@@ -29,4 +31,3 @@ module.exports = {
     }
   ]
 }
-
