@@ -1,6 +1,6 @@
 const path = require('path')
 module.exports = {
-  version: "3.6",
+  version: "3.7",
   title: "<TITLE>",
   description: "",
   icon: "<ICON>",
@@ -70,9 +70,15 @@ module.exports = {
           text: "Install",
           href: "install.js",
         }, {
+          icon: "fa-solid fa-file-zipper",
+          text: "<div><strong>Save Disk Space</strong><div>Deduplicates redundant library files</div></div>",
+          href: "link.json",
+        }, {
           icon: "fa-regular fa-circle-xmark",
-          text: "Reset",
-          href: "reset.js",
+          text: "<div><strong>Reset</strong><div>Revert to pre-install state</div></div>",
+          href: "reset.json",
+          confirm: "Are you sure you wish to reset the app?"
+
         }]
       }
     } else {

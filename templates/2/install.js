@@ -23,11 +23,5 @@ module.exports = {
         ],
       }
     },
-    {
-      method: "fs.link",
-      params: {
-        venv: "env"
-      }
-    }
   ]
 }
