@@ -98,7 +98,7 @@ module.exports = {
       "params": {
         "venv": "{{args && args.venv ? args.venv : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
-        "message": "uv pip install torch==2.6.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.0"
+        "message": "uv pip install torch==2.6.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.2.4"
       },
       "next": null
     },
