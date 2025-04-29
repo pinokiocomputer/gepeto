@@ -1,4 +1,19 @@
 #!/usr/bin/env node
+/**
+ * gepeto - A CLI tool for creating Pinokio applications
+ * 
+ * Usage:
+ *   npx gepeto                     - Interactive mode with prompts
+ *   npx gepeto --name=<name>       - Project name
+ *   npx gepeto --git=<url>         - 3rd party git repository URL
+ *   npx gepeto --icon=<url>        - Custom icon URL
+ *   npx gepeto --install=<file>    - Custom pip install file (default: requirements.txt)
+ *   npx gepeto --start=<file>      - Custom app start file (default: app.py)
+ * 
+ * Examples:
+ *   npx gepeto --name=my-app --git=https://github.com/user/repo
+ *   npx gepeto --name=my-app --start=main.py --install=requirements.txt
+ */
 // 1. npx gepeto <name> <git url>: external git
 // 2. npx gepeto <name>: no external git
 const fs = require('fs')
