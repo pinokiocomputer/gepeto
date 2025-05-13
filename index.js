@@ -201,7 +201,8 @@ A pinokio script for ${url}
   let gitIgnore = path.resolve(dest, ".gitignore")
   let gitIgnoreContent = [
     "node_modules",
-    ".DS_Store"
+    ".DS_Store",
+    "ENVIRONMENT"
   ].join("\n")
   fs.writeFileSync(gitIgnore, gitIgnoreContent)
 
