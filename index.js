@@ -12,7 +12,7 @@ const prompts = require('prompts');
 const git = require('isomorphic-git');
 const add = async (type, argv) => {
   console.log("add", type, argv)
-  let pinokio_meta = path.resolve(process.cwd(), "pinokio_meta.json")
+  let pinokio_meta = path.resolve(process.cwd(), "pinokio.json")
   let meta
   try {
     meta = require(pinokio_meta)
@@ -134,7 +134,7 @@ const bootstrap = async (argv) => {
     str = str.replaceAll("<TITLE>", name)
     fs.writeFileSync(pinokioFile, str)
 
-    let pinokio_meta = path.resolve(dest, "pinokio_meta.json")
+    let pinokio_meta = path.resolve(dest, "pinokio.json")
     let str2 = JSON.stringify({
       links: [],
       posts: []
