@@ -127,20 +127,36 @@ const bootstrap = async (argv) => {
     fs.writeFileSync(installFile, str)
   }
 
-  // 3. replace $TITLE from pinokio.js
-  if (name) {
-    let pinokioFile = path.resolve(dest, "pinokio.js")
-    let str = fs.readFileSync(pinokioFile, "utf8")
-    str = str.replaceAll("<TITLE>", name)
-    fs.writeFileSync(pinokioFile, str)
-
-    let pinokio_meta = path.resolve(dest, "pinokio.json")
-    let str2 = JSON.stringify({
-      links: [],
-      posts: []
-    }, null, 2)
-    fs.writeFileSync(pinokio_meta, str2)
+  // 7. icon handling
+  let icon
+  if (response.icon) {
+    icon = response.icon
+    const streamPipeline = promisify(pipeline);
+    const res = await fetch(response.icon);
+    if (!res.ok) {
+      throw new Error(`unexpected response ${res.statusText}`);
+    }
+    const contentType = res.headers.get('content-type');
+    const extension = contentType.split('/')[1];
+    icon = `icon.${extension}`
+    const iconFile = path.resolve(dest, icon);
+    await streamPipeline(res.body, fs.createWriteStream(iconFile));
+  } else {
+    icon = "icon.png"
   }
+
+  // 3. replace $TITLE from pinokio.js
+  let pinokio_meta = path.resolve(dest, "pinokio.json")
+  let str2 = JSON.stringify({
+    title: name || "untitled",
+    description: "",
+    icon,
+    links: [],
+    posts: []
+  }, null, 2)
+  fs.writeFileSync(pinokio_meta, str2)
+
+
 
   // 4. replace <INSTALL_FILE> with response.install
   let installFile = path.resolve(dest, "install.js")
@@ -165,26 +181,6 @@ const bootstrap = async (argv) => {
     await fs.promises.rename(path.resolve(dest, "app.py"), appFile)
   }
 
-  // 7. icon handling
-  let icon
-  if (response.icon) {
-    const streamPipeline = promisify(pipeline);
-    const res = await fetch(response.icon);
-    if (!res.ok) {
-      throw new Error(`unexpected response ${res.statusText}`);
-    }
-    const contentType = res.headers.get('content-type');
-    const extension = contentType.split('/')[1];
-    icon = `icon.${extension}`
-    const iconFile = path.resolve(dest, icon);
-    await streamPipeline(res.body, fs.createWriteStream(iconFile));
-  } else {
-    icon = "icon.png"
-  }
-  let pinokioFile = path.resolve(dest, "pinokio.js")
-  let str = fs.readFileSync(pinokioFile, "utf8")
-  str = str.replaceAll("<ICON>", icon)
-  fs.writeFileSync(pinokioFile, str)
   
   // Autogenerate README
   if (url) {
