@@ -10,8 +10,8 @@ module.exports = {
         "message": [
           "uv pip install torch==2.7.0 torchvision==0.22.0 torchaudio==2.7.0 {{args && args.xformers ? 'xformers==0.0.30' : ''}} --index-url https://download.pytorch.org/whl/cu128 --force-reinstall --no-deps",
           "{{args && args.triton ? 'uv pip install triton-windows==3.3.1.post19' : ''}}",
-          "{{args && args.sageattention ? 'uv pip install https://huggingface.co/cocktailpeanut/wheels/resolve/main/sageattention-2.1.1-cu128-torch2.7.1-cp310-win_amd64.whl --force-reinstall' : ''}}",
-          "{{args && args.flashattention ? 'uv pip install https://huggingface.co/cocktailpeanut/wheels/resolve/main/flash_attn-2.7.4.post1-cu128-torch2.7.0-cp310-win_amd64.whl' : ''}}"
+          "{{args && args.sageattention ? 'uv pip install https://huggingface.co/cocktailpeanut/wheels/resolve/main/sageattention-2.1.1-1.cu128.torch2.7.1-cp310-cp310-win_amd64.whl --force-reinstall' : ''}}",
+          "{{args && args.flashattention ? 'uv pip install https://huggingface.co/cocktailpeanut/wheels/resolve/main/flash_attn-2.7.4.post1-1.cu128.torch2.7.0-cp310-cp310-win_amd64.whl' : ''}}"
         ]
       },
       "next": null
@@ -26,8 +26,8 @@ module.exports = {
         "message": [
           "uv pip install torch==2.7.0 torchvision==0.22.0 torchaudio==2.7.0 {{args && args.xformers ? 'xformers==0.0.30' : ''}} --index-url https://download.pytorch.org/whl/cu128 --force-reinstall",
           "{{args && args.triton ? 'uv pip install triton' : ''}}",
-          "{{args && args.sageattention ? 'uv pip install https://huggingface.co/cocktailpeanut/wheels/resolve/main/sageattention-2.1.1-cu128-torch2.7.1-cp310-linux_x86_64.whl' : ''}}",
-          "{{args && args.flashattention ? 'uv pip install https://huggingface.co/cocktailpeanut/wheels/resolve/main/flash_attn-2.7.4.post1-cu128-torch2.7.0-cp310-linux_x86_64.whl' : ''}}"
+          "{{args && args.sageattention ? 'uv pip install https://huggingface.co/cocktailpeanut/wheels/resolve/main/sageattention-2.1.1-1.cu128.torch2.7.1-cp310-cp310-linux_x86_64.whl' : ''}}",
+          "{{args && args.flashattention ? 'uv pip install https://huggingface.co/cocktailpeanut/wheels/resolve/main/flash_attn-2.7.4.post1-1.cu128.torch2.7.0-cp310-cp310-linux_x86_64.whl' : ''}}"
         ]
       },
       "next": null
